@@ -3,15 +3,14 @@ const express = require("express");
 const app = express();
 const fs = require("fs");
 let data1 = JSON.parse(fs.readFileSync(`${__dirname}/data.json`));
-let pdfNumber = 202310001;
+// let pdfNumber = 202310001;
 // app.use(morgan("dev"));
 app.use(express.json());
 app.get("/api/v1/data", (req, res) => {
   res.status(200).json({
     status: "success",
-    data: {
-      data1,
-    },
+
+    data1,
   });
 });
 app.post("/api/v1/data", (req, res) => {
@@ -19,11 +18,12 @@ app.post("/api/v1/data", (req, res) => {
   var dateString = currentDate.toLocaleDateString();
   var timeString = currentDate.toLocaleTimeString();
   const newId = data1[data1.length - 1].id + 1;
-  pdfNumber = pdfNumber + 1;
+  let buffNumber = data1[data1.length - 1].pdf + 1;
+
   const newData = Object.assign(
     { id: newId },
     req.body,
-    { pdf: pdfNumber },
+    { pdf: buffNumber },
     { data: dateString },
     { time: timeString }
   );
