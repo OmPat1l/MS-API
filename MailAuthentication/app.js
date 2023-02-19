@@ -62,16 +62,16 @@ app.post("/mindspark/v1/data/verified", (req, res) => {
   let reqotp = req.body.otp;
   if (otp == reqotp) {
     let buffprime = datag.totalpasses;
-    let pdfnumber1 = datag.pdfnumber;
-    pdfnumber1++;
+    let passnumber1 = datag.passnumber;
+    passnumber1++;
     buffprime--;
-    let buffObject = { totalpasses: buffprime, pdfnumber: pdfnumber1 };
+    let buffObject = { totalpasses: buffprime, passnumber: passnumber1 };
     Object.assign(datag, buffObject);
     const updatedJsonString = JSON.stringify(datag);
     fs.writeFileSync(`${__dirname}/generaldata.json`, updatedJsonString);
     res.status(201).json({
       status: "success",
-      pdf: `${pdfnumber1}`,
+      passnumber: `${buffObject.passnumber}`,
     });
     return;
   } else {
