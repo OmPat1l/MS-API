@@ -1,10 +1,15 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
+const nodemailer = require("nodemailer");
+// const sendMail=require('./')
 let data1 = JSON.parse(fs.readFileSync(`${__dirname}/data.json`));
 let datag = JSON.parse(fs.readFileSync(`${__dirname}/generaldata.json`));
+let otp = Math.floor(Math.random() * 1000000);
+otp = otp.toString().padStart(6, "0");
 
 app.use(express.json());
+//get req not for users
 app.get("/mindspark/v1/data", (req, res) => {
   res.status(200).json({
     status: "success",
@@ -12,6 +17,10 @@ app.get("/mindspark/v1/data", (req, res) => {
     data1,
   });
 });
+//post req to api with obj {
+// "mis":111111111
+// "mail":trial@coep.ac.in
+// }
 app.post("/mindspark/v1/data", (req, res) => {
   var currentDate = new Date();
   var dateString = currentDate.toLocaleDateString();
@@ -21,8 +30,10 @@ app.post("/mindspark/v1/data", (req, res) => {
     const datamis = jsonObject.mis;
     const datamail = jsonObject.mail;
     const hasDownloaded = jsonObject.hasdownloaded;
-    let inputMis = req.body.mis; // use req.body.mis instead of req.mis
-    let inputMail = req.body.mail; // use req.body.mail instead of req.mail
+    let inputMis = req.body.mis;
+    let inputMail = req.body.mail;
+
+    //checking whether user is in database
     if (inputMis == datamis && inputMail == datamail) {
       let buffprime = datag.totalpasses;
       if (buffprime > 0) {
@@ -31,12 +42,34 @@ app.post("/mindspark/v1/data", (req, res) => {
         Object.assign(datag, buffObject);
         const updatedJsonString = JSON.stringify(datag);
         fs.writeFileSync(`${__dirname}/generaldata.json`, updatedJsonString);
+
+        //sending mail
+        const sendMail = async (req, res) => {
+          let testAccount = await nodemailer.createTestAccount();
+          const transporter = await nodemailer.createTransport({
+            host: "smtp.ethereal.email",
+            port: 587,
+            auth: {
+              user: "haven.weissnat35@ethereal.email",
+              pass: "rDg6ruEKhkgVxFyMn1",
+            },
+          });
+          let info = await transporter.sendMail({
+            from: '"Fred Foo 👻" <ompatil@mindspark.com>', // sender address
+            to: `${datamail}`, // list of receivers
+            subject: "MindSpark OTP", // Subject line
+            text: `click on the given link to authorize your service and enter ${otp}`, // plain text body
+            // html body
+          });
+        };
+
+        return;
+      } else {
         res.status(201).json({
-          status: "success",
+          status: "fail",
+          message: "passes exhausted",
         });
       }
-
-      return; // exit the function once a matching object is found
     } else if (i >= data1.length - 1) {
       res.status(201).json({
         status: "fail",

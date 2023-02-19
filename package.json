@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "express": "^4.18.2",
+    "nodemailer": "^6.9.1",
     "twilio": "^4.7.2"
   }
 }
