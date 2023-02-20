@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
-// const nodemailer = require("nodemailer");
 let otp = 0;
 let data1 = JSON.parse(fs.readFileSync(`${__dirname}/data.json`));
 let datag = JSON.parse(fs.readFileSync(`${__dirname}/generaldata.json`));
@@ -26,16 +25,16 @@ app.post("/mindspark/v1/data", (req, res) => {
     // const hasDownloaded = jsonObject.hasdownloaded;
     let inputMis = req.body.mis;
     let inputMail = req.body.mail;
-    if (jsonObject.hasdownloaded) {
-      res.status(201).json({
-        status: "fail",
-        message: "already downloade",
-      });
-      return;
-    }
 
     //checking whether user is in database
     if (inputMis == datamis && inputMail == datamail) {
+      if (jsonObject.hasdownloaded) {
+        res.status(201).json({
+          status: "fail",
+          message: "already downloaded",
+        });
+        return;
+      }
       let buffprime = datag.totalpasses;
       index = i;
       if (buffprime > 0) {
@@ -71,9 +70,14 @@ app.post("/mindspark/v1/data/verified", (req, res) => {
   let reqotp = req.body.otp;
   if (otp == reqotp) {
     data1[index].hasdownloaded = true;
+    data1[index].date = dateString;
+    data1[index].time = timeString;
+
     let buffprime = datag.totalpasses;
     let passnumber1 = datag.passnumber;
     passnumber1++;
+    data1[index].passnumber = passnumber1;
+
     buffprime--;
     let buffObject = { totalpasses: buffprime, passnumber: passnumber1 };
     Object.assign(datag, buffObject);
@@ -90,9 +94,7 @@ app.post("/mindspark/v1/data/verified", (req, res) => {
   } else {
     res.status(404).json({
       status: "fail",
-      otp: `${otp}`,
-      reqotp: `${reqotp}`,
-      //  pdf: 111111,
+      message: "wrong otp",
     });
     return;
   }
