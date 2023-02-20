@@ -16,6 +16,7 @@ app.get("/mindspark/v1/data", (req, res) => {
     data1,
   });
 });
+let index = 0;
 
 app.post("/mindspark/v1/data", (req, res) => {
   for (let i = 1; i < data1.length; i++) {
@@ -25,10 +26,18 @@ app.post("/mindspark/v1/data", (req, res) => {
     const hasDownloaded = jsonObject.hasdownloaded;
     let inputMis = req.body.mis;
     let inputMail = req.body.mail;
+    if (hasDownloaded) {
+      res.status(201).json({
+        status: "fail",
+        message: "already downloade",
+      });
+      return;
+    }
 
     //checking whether user is in database
     if (inputMis == datamis && inputMail == datamail) {
       let buffprime = datag.totalpasses;
+      index = i;
       if (buffprime > 0) {
         otp = Math.floor(Math.random() * 1000000);
         otp = otp.toString().padStart(6, "0");
@@ -61,6 +70,7 @@ app.post("/mindspark/v1/data", (req, res) => {
 app.post("/mindspark/v1/data/verified", (req, res) => {
   let reqotp = req.body.otp;
   if (otp == reqotp) {
+    data1[index].hasdownloaded = true;
     let buffprime = datag.totalpasses;
     let passnumber1 = datag.passnumber;
     passnumber1++;
@@ -68,7 +78,10 @@ app.post("/mindspark/v1/data/verified", (req, res) => {
     let buffObject = { totalpasses: buffprime, passnumber: passnumber1 };
     Object.assign(datag, buffObject);
     const updatedJsonString = JSON.stringify(datag);
+    const updatedJsonData = JSON.stringify(data1);
     fs.writeFileSync(`${__dirname}/generaldata.json`, updatedJsonString);
+    fs.writeFileSync(`${__dirname}/data.json`, updatedJsonData);
+
     res.status(201).json({
       status: "success",
       passnumber: `${buffObject.passnumber}`,
