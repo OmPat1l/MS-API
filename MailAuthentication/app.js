@@ -19,14 +19,14 @@ app.get("/mindspark/v1/data", (req, res) => {
 let index = 0;
 
 app.post("/mindspark/v1/data", (req, res) => {
-  for (let i = 1; i < data1.length; i++) {
-    const jsonObject = data1[i];
-    const datamis = jsonObject.mis;
-    const datamail = jsonObject.mail;
-    const hasDownloaded = jsonObject.hasdownloaded;
+  for (let i = 0; i < data1.length; i++) {
+    let jsonObject = data1[i];
+    let datamis = jsonObject.mis;
+    let datamail = jsonObject.mail;
+    // const hasDownloaded = jsonObject.hasdownloaded;
     let inputMis = req.body.mis;
     let inputMail = req.body.mail;
-    if (hasDownloaded) {
+    if (jsonObject.hasdownloaded) {
       res.status(201).json({
         status: "fail",
         message: "already downloade",

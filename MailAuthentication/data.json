@@ -3,7 +3,7 @@
   {
     "mis": 112107041,
     "mail": "omap121.extc@coep.ac.in",
-    "hasdownloaded": false
+    "hasdownloaded": true
   },
   {
     "mis": 112107042,
@@ -20,7 +20,7 @@
     "mail": "omap421.extc@coep.ac.in",
     "hasdownloaded": false
   },
-  { "mis": 112107040, "mail": "omap21.extc@coep.ac.in" },
+  { "mis": 112107040, "mail": "omap21.extc@coep.ac.in", "hasdownloaded": true },
   {
     "mis": 112107045,
     "mail": "omap521.extc@coep.ac.in",
