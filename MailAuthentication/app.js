@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
-const nodemailer = require("nodemailer");
+// const nodemailer = require("nodemailer");
 let otp = 0;
 let data1 = JSON.parse(fs.readFileSync(`${__dirname}/data.json`));
 let datag = JSON.parse(fs.readFileSync(`${__dirname}/generaldata.json`));
@@ -85,4 +85,4 @@ app.post("/mindspark/v1/data/verified", (req, res) => {
   }
 });
 
-app.listen(3002);
+app.listen(3003);
