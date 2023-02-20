@@ -59,6 +59,7 @@ app.post("/mindspark/v1/data", (req, res) => {
     } else if (i >= data1.length - 1) {
       res.status(201).json({
         status: "fail",
+        message: "wrong credentials",
       });
     }
   }

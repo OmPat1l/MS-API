@@ -1,14 +1,24 @@
 [
-  { "mis": 112107040, "mail": "omap21.extc@coep.ac.in", "hasdownloaded": true },
+  {
+    "mis": 112107040,
+    "mail": "omap21.extc@coep.ac.in",
+    "hasdownloaded": true,
+    "hasEntered": false
+  },
   {
     "mis": 112107041,
     "mail": "omap121.extc@coep.ac.in",
-    "hasdownloaded": true
+    "hasdownloaded": true,
+    "date": "20/02/2023",
+    "time": "14:33:40",
+    "passnumber": 202301015,
+    "hasEntered": false
   },
   {
     "mis": 112107042,
     "mail": "omap221.extc@coep.ac.in",
-    "hasdownloaded": false
+    "hasdownloaded": false,
+    "hasEntered": false
   },
   {
     "mis": 112107043,
@@ -16,18 +26,35 @@
     "hasdownloaded": true,
     "date": "20/02/2023",
     "time": "14:27:28",
-    "passnumber": 202301014
+    "passnumber": 202301014,
+    "hasEntered": false
   },
   {
     "mis": 112107044,
     "mail": "omap421.extc@coep.ac.in",
-    "hasdownloaded": false
+    "hasdownloaded": false,
+    "hasEntered": false
   },
-  { "mis": 112107040, "mail": "omap21.extc@coep.ac.in", "hasdownloaded": true },
+  {
+    "mis": 112107040,
+    "mail": "omap21.extc@coep.ac.in",
+    "hasdownloaded": true,
+    "hasEntered": false
+  },
   {
     "mis": 112107045,
     "mail": "omap521.extc@coep.ac.in",
-    "hasdownloaded": false
+    "hasdownloaded": true,
+    "hasEntered": false,
+    "date": "20/02/2023",
+    "time": "14:42:48",
+    "passnumber": 202301016
+  },
+  {
+    "mis": 112107040,
+    "mail": "omap21.extc@coep.ac.in",
+    "hasdownloaded": false,
+    "hasEntered": false
   },
   {
     "mis": 112107040,
@@ -37,16 +64,13 @@
   {
     "mis": 112107040,
     "mail": "omap21.extc@coep.ac.in",
-    "hasdownloaded": false
-  },
-  {
-    "mis": 112107040,
-    "mail": "omap21.extc@coep.ac.in",
-    "hasdownloaded": false
+    "hasdownloaded": false,
+    "hasEntered": false
   },
   {
     "mis": 112107046,
     "mail": "omap621.extc@coep.ac.in",
-    "hasdownloaded": false
+    "hasdownloaded": false,
+    "hasEntered": false
   }
 ]
