@@ -18,6 +18,13 @@ app.get("/mindspark/v1/data", (req, res) => {
 let index = 0;
 
 app.post("/mindspark/v1/data", (req, res) => {
+  if (datag.totalpasses <= 0) {
+    res.status(201).json({
+      status: "fail",
+      message: "passes exhausted",
+    });
+    return;
+  }
   for (let i = 0; i < data1.length; i++) {
     let jsonObject = data1[i];
     let datamis = jsonObject.mis;

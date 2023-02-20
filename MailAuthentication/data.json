@@ -51,15 +51,21 @@
     "passnumber": 202301016
   },
   {
-    "mis": 112107040,
-    "mail": "omap21.extc@coep.ac.in",
-    "hasdownloaded": false,
-    "hasEntered": false
+    "mis": 112107046,
+    "mail": "omap621.extc@coep.ac.in",
+    "hasdownloaded": true,
+    "hasEntered": false,
+    "date": "20/02/2023",
+    "time": "14:54:19",
+    "passnumber": 202301018
   },
   {
-    "mis": 112107040,
-    "mail": "omap21.extc@coep.ac.in",
-    "hasdownloaded": false
+    "mis": 112107047,
+    "mail": "omap721.extc@coep.ac.in",
+    "hasdownloaded": true,
+    "date": "20/02/2023",
+    "time": "14:51:44",
+    "passnumber": 202301018
   },
   {
     "mis": 112107040,
@@ -70,6 +76,15 @@
   {
     "mis": 112107046,
     "mail": "omap621.extc@coep.ac.in",
+    "hasdownloaded": true,
+    "hasEntered": false,
+    "date": "20/02/2023",
+    "time": "14:48:11",
+    "passnumber": 202301017
+  },
+  {
+    "mis": 112107050,
+    "mail": "omap5021.extc@coep.ac.in",
     "hasdownloaded": false,
     "hasEntered": false
   }
