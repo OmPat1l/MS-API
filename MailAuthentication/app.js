@@ -75,6 +75,9 @@ app.post("/mindspark/v1/data", (req, res) => {
 });
 
 app.post("/mindspark/v1/data/verified", (req, res) => {
+  if (datag.totalpasses <= 0) {
+    process.exit();
+  }
   let reqotp = req.body.otp;
   if (otp == reqotp) {
     data1[index].hasdownloaded = true;
