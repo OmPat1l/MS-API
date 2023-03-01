@@ -62,7 +62,6 @@ Status code in the API are still to be properly alloted, but still if you want t
 How I further plan to extrapolate this API and deploy it for users?
 High level System design:-
 
-
 User enters MIS number and email: A web or mobile interface will allow the user to enter their MIS number and email.
 
 1)API checks database for user: When the user submits the MIS number and email, the system will query a database to see if a user exists with those parameters. The database should be designed to handle high traffic and scale horizontally as needed.
