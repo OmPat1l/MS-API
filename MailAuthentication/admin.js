@@ -9,6 +9,13 @@ var currentDate = new Date();
 var dateString = currentDate.toLocaleDateString();
 var timeString = currentDate.toLocaleTimeString();
 app.use(express.json());
+app.get("/mindspark/admin/user/:id", (req, res) => {
+  let dataUser = JSON.parse(fs.readFileSync(`${__dirname}/data.json`));
+  let response = dataUser.find((el) => el.mis == req.params.id);
+  res.status(200).json({
+    response,
+  });
+});
 // sample json should be
 //{mis:val,mail:val;,pass:val}
 app.post("/mindspark/admin", (req, res) => {

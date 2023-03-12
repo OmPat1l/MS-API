@@ -4,9 +4,9 @@
     "mail": "omap21.extc@coep.ac.in",
     "hasdownloaded": true,
     "hasEntered": true,
-    "date": "3/1/2023",
-    "time": "2:07:18 PM",
-    "passnumber": 202301001
+    "date": "3/8/2023",
+    "time": "4:20:27 PM",
+    "passnumber": 202301008
   },
   {
     "mis": 112107041,
@@ -41,8 +41,11 @@
   {
     "mis": 112107045,
     "mail": "omap521.extc@coep.ac.in",
-    "hasdownloaded": false,
-    "hasEntered": false
+    "hasdownloaded": true,
+    "hasEntered": true,
+    "date": "3/7/2023",
+    "time": "11:01:19 AM",
+    "passnumber": 202301007
   },
   {
     "mis": 112107046,

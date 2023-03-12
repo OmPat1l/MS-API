@@ -1,6 +1,10 @@
 const express = require("express");
+
+// const db = firebase.firestore();
+
 const app = express();
 const fs = require("fs");
+
 let otp = 0;
 let data1 = JSON.parse(fs.readFileSync(`${__dirname}/data.json`));
 let datag = JSON.parse(fs.readFileSync(`${__dirname}/generaldata.json`));
@@ -8,6 +12,7 @@ var currentDate = new Date();
 var dateString = currentDate.toLocaleDateString();
 var timeString = currentDate.toLocaleTimeString();
 app.use(express.json());
+
 app.get("/mindspark/v1/data", (req, res) => {
   res.status(200).json({
     status: "success",
